@@ -9,6 +9,7 @@ import {
   loginUserSuccess,
   loginUserError,
   signOutUser,
+  resetError,
 } from "./authAction";
 
 const authReducerPersistConfig = {
@@ -54,6 +55,7 @@ const errorAuthReducer = createReducer("", {
   [loginUserRequest]: () => "",
   [loginUserError]: (_, { payload }) => payload,
   [signOutUser]: () => "",
+  [resetError]: () => "",
 });
 
 export default combineReducers({

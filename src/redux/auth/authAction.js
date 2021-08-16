@@ -9,3 +9,5 @@ export const loginUserSuccess = createAction("auth/loginUserSuccess");
 export const loginUserError = createAction("auth/loginUserError");
 
 export const signOutUser = createAction("auth/signOutUser");
+
+export const resetError = createAction("auth/resetError");

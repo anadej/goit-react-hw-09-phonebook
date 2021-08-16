@@ -8,6 +8,7 @@ import { AuthContainer } from "./AuthStyled";
 import sprite from "../../icons/project_sprites.svg";
 import { useLocation } from "react-router-dom";
 import { getError } from "../../redux/auth/authSelector";
+import { resetError } from "../../redux/auth/authAction";
 
 const initialState = {
   email: "",
@@ -18,7 +19,7 @@ const initialState = {
 const Auth = () => {
   const [state, setState] = useState({ ...initialState });
 
-  const error = useSelector(getError);
+  let error = useSelector(getError);
 
   const dispatch = useDispatch();
   const location = useLocation();
@@ -26,9 +27,13 @@ const Auth = () => {
   const isRegisterPage = location.pathname === "/register";
 
   useEffect(() => {
-    isRegisterPage && error === "Request failed with status code 400"
-      ? alert("User with this name is already registered.")
-      : alert("User not found! Input correct login data.");
+    if (isRegisterPage && error === "Request failed with status code 400") {
+      alert("User with this name is already registered.");
+    }
+    if (!isRegisterPage && error === "Request failed with status code 400") {
+      alert("User not found! Input correct login data.");
+    }
+    dispatch(resetError());
     // eslint-disable-next-line
   }, [error]);
 
@@ -40,7 +45,7 @@ const Auth = () => {
   const onHandleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = state;
-    isRegisterPage()
+    isRegisterPage
       ? dispatch(registerUserOperation(state))
       : dispatch(loginUserOperation({ email, password }));
   };
