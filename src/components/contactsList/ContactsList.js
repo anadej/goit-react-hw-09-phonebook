@@ -7,8 +7,6 @@ import sprite from "../../icons/project_sprites.svg";
 import Table from "react-bootstrap/Table";
 
 const ContactsList = () => {
-  let i = 0;
-
   const dispatch = useDispatch();
   const contacts = useSelector(getFilteredContacts);
   console.log("contacts", contacts);
@@ -24,9 +22,9 @@ const ContactsList = () => {
           </tr>
         </thead>
         <tbody>
-          {contacts.map((contact) => (
+          {contacts.map((contact, index) => (
             <tr key={contact.id}>
-              <td>{++i}</td>
+              <td>{++index}</td>
               <td>{contact.name}</td>
               <td>{contact.number}</td>
               <td>

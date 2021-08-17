@@ -6,10 +6,11 @@ import Section from "../components/Section";
 import Loader from "react-loader-spinner";
 
 import { ContactPageContainer } from "./ContactPageStyled";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import { getLoading } from "../redux/contacts/contactsSelectors";
 
-const ContactPage = ({ isLoading }) => {
+const ContactPage = () => {
+  const isLoading = useSelector(getLoading);
   return (
     <ContactPageContainer>
       {isLoading && (
@@ -28,10 +29,4 @@ const ContactPage = ({ isLoading }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    isLoading: getLoading(state),
-  };
-};
-
-export default connect(mapStateToProps)(ContactPage);
+export default ContactPage;

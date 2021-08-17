@@ -8,7 +8,7 @@ export const StartPageContainer = styled.section`
     margin: 0px auto;
     padding-top: 40px;
     height: 720px;
-    background-image: url("https://pixabay.com/get/gb152ab854fa660116fcd438bd639b7ca42041a8a705c85c3e923d1c499c5fc0a3ea997945fbaf9eda61a4cf473ac0728ec6f694888103af83d8f3a4f79335669_1280.jpg");
+    background-image: url("https://cdn.pixabay.com/photo/2014/10/23/16/58/phone-499991_960_720.jpg");
   }
 
   .title {
